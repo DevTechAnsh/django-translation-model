@@ -1,0 +1,8 @@
+#django
+django==4.1.6
+
+#db-tools
+psycopg2-binary==2.9.5
+
+#testing-tools
+pytest==7.2.1
