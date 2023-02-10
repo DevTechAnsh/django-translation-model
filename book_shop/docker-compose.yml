@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    db:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=postgres
+            - PGDATA=/var/lib/postgresql/data
+        volumes:
+            - "./postgres-data/:/var/lib/postgresql/data"
+        ports:
+            - "5433:5432"
+
+    django:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-django
+        volumes:
+            - ".:/app"
+        depends_on:
+            - db
+        environment:
+            - PYTHONUNBUFFERED=0
+            - PYTHONPYCACHEPREFIX=../__pycache__
+        ports:
+            - "8000:8000"
+        command:
+                bash -c "
+                python manage.py migrate &&
+                python manage.py runserver 0.0.0.0:8000"
+        env_file:
+            - .env
