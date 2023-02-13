@@ -10,8 +10,8 @@ class BookTranslationForm(forms.ModelForm):
         exclude = ["book_name"]
 
     def __init__(self, *args, **kwargs):
+        super ().__init__ (*args, **kwargs)
         for key,val in settings.LANGUAGES:
             self.base_fields[f'book_name_{key}'] = forms.CharField(required=True, label=f'Book Name ({key})')
-            super().__init__ (*args, **kwargs)
-            if self.instance:
+            if hasattr(self, "instance"):
                 self.initial.update({f"book_name_{k}": v for k, v in self.instance.book_name.items ()})
