@@ -3,6 +3,7 @@ version: '3'
 services:
     db:
         image: postgres
+        container_name: model_translation_db
         environment:
             - POSTGRES_PASSWORD=postgres
             - PGDATA=/var/lib/postgresql/data
