@@ -3,6 +3,25 @@
 ## Django i18n support
 I have created a `book name` translation model according the requirement I have added a json field in the model called `book_name` and update the field in django admin from one json field into multiple character field also I have added py test cases for that.
 
+### How to run the project
+1. clone the project
+2. Change your current directory <br>
+```cd book_shop```
+3. Create a .env file from the .env.example file <br>
+``cp .env.example .env``
+4. Run build and do the setup <br>
+```make build```
+5. Run your server <br>
+```make runserver```
+6. Open a new terminal Create the database <br>
+```make init-db```
+7. Migrate django models in your database <br>
+```make migrate```
+8. Stop your old container and again run your server <br>
+```make runserver```
+9. To create the superuser or admin
+```make superuser```
+
 ## Trees (optional)
 ### How would you implement such a data model in any RDBMS? Please provide your thoughts or even add a simple code snippet (Django-based would be great)
 To implement hierarchical data in a database MPTT(Modified Preorder Tree Traversal) is good way. which provide us very efficient way to make retrieval operations.
